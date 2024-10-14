@@ -1,0 +1,33 @@
+ CREATE 
+(russell:PLAYER{name:"Russell Westbrook", age: 33, number: 0, height: 1.91, weight: 91}),
+(lebron:PLAYER{name:"LeBron James", age: 36, number: 6, height: 2.06, weight: 113}),
+(anthony:PLAYER{name:"Anthony Davis", age: 28, number: 23, height: 2.08, weight: 115}),
+(ja:PLAYER{name:"Ja Morant", age: 22, number: 12, height: 1.91, weight: 79}),
+
+(frank:COACH{name: "Frank Vogel"}),
+(taylor:COACH{name: "Taylor Jenkins"}),
+
+(lakers:TEAM{name:"LA Lakers"}),
+(mavericks:TEAM{name:"Dallas Mavericks"}),
+
+(lebron)-[:TEAMMATES]-> (russell),
+(lebron)<-[:TEAMMATES]- (russell),
+(ja)-[:TEAMMATES]-> (anthony),
+(ja)<-[:TEAMMATES]- (anthony),
+
+(frank)-[:COACHES]->(lebron),
+(frank)-[:COACHES]->(russell),
+(taylor)-[:COACHES]->(ja),
+(taylor)-[:COACHES]->(anthony),
+
+(lebron)-[:PLAYS_FOR {salary: 40000000}]-> (lakers),
+(russell)-[:PLAYS_FOR {salary: 33000000}]-> (lakers),
+(anthony)-[:PLAYS_FOR {salary: 38000000}]-> (mavericks),
+(ja)-[:PLAYS_FOR {salary: 8000000}]-> (mavericks),
+
+(frank)-[:COACHES_FOR]->(lakers),
+(taylor)-[:COACHES_FOR]->(mavericks),
+(lebron)-[:PLAYED_AGAINST {minutes: 38, points: 32, assists: 6, rebounds: 6, turnovers: 2}]-> (mavericks),
+(russell)-[:PLAYED_AGAINST {minutes: 29, points: 16, assists: 12, rebounds: 11, turnovers: 16}]-> (mavericks),
+(anthony)-[:PLAYED_AGAINST {minutes: 36, points: 27, assists: 2, rebounds: 8, turnovers: 1}]-> (lakers),
+(ja)-[:PLAYED_AGAINST {minutes: 43, points: 42, assists: 7, rebounds: 8, turnovers: 4}]-> (lakers);
